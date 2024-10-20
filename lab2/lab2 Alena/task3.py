@@ -4,7 +4,7 @@ import random
 from statistics import *
 from math import pi
 
-n = 1
+n = 9
 N = 1000
 r = n
 

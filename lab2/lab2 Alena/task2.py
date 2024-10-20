@@ -1,18 +1,21 @@
+from math import *
 import matplotlib.pyplot as plt
 import numpy as np
 import random
 
-n = 1
-N = 5000
+
+import numpy as np
+
+
+n = 9
+N = 500
 
 def f(x):
-    if (0<=x<1):
-        return 10*x/n
-    if (1<=x<20):
-        return 10*(x-20)/(n-20)
+    return sqrt(11 - n * sin(x)*sin(x))
 
-b = 10
-a = 20
+
+a = 5
+b = 4
 
 x=[0]*(N+1)
 y=[0]*(N+1)
@@ -32,15 +35,14 @@ s = M/N*a*b
 
 print(N, 'точек. Приблизительная площадь S =', round(s, 4))
 
-exact_value = a * b / 2
+exact_value = 12.011
 print('Точное значение площади:', round(exact_value, 4))
 absolute_error = abs(s - exact_value)
 print('Абсолютная погрешность:', round(absolute_error, 4))
-print('Относительная погрешность:', round(absolute_error / exact_value, 4))
+print('Относительная погрешность:', round(absolute_error / exact_value, 4) * 100, "%")
 
-plt.scatter(*zip(*inside), s=5, color='green')
-plt.scatter(*zip(*outside), s=5, color='red')
-X = np.arange(0, 20, 0.0001)
-plt.plot(X, [f(x) for x in X], linewidth=1, color='black')
-plt.plot((0, 20), (0, 0), linewidth=1, color='black')
+plt.scatter(*zip(*inside), s=5, color='blue')
+plt.scatter(*zip(*outside), s=5, color='purple')
+X = np.arange(0.01, a, 0.0001)
+plt.plot(X, [f(x) for x in X], linewidth=2.7, color='black')
 plt.show()

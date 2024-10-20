@@ -3,7 +3,7 @@ import numpy as np
 import random
 from math import *
 
-n = 1
+n = 9
 N = 5000
 
 def f(phi):

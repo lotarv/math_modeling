@@ -58,7 +58,7 @@ exact_value = 21*pi/2
 print('Точное значение площади:', round(exact_value, 4))
 absolute_error = abs(s - exact_value)
 print('Абсолютная погрешность:', round(absolute_error, 4))
-print('Относительная погрешность:', round(absolute_error / exact_value, 4))
+print('Относительная погрешность:', round(absolute_error / exact_value, 4) * 100, "%")
 
 plt.scatter(*zip(*outside), s=5, color='red')
 plt.scatter(*zip(*inside), s=5, color='green')

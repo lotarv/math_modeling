@@ -35,7 +35,7 @@ print(N, 'точек. Вычисленное значение pi =', p)
 print('Значение числа пи из бибиотеки math:', pi)
 absolute_error = abs(p - pi)
 print('Абсолютная погрешность:', round(absolute_error, 4))
-print('Относительная погрешность:', round(absolute_error / pi, 4))
+print('Относительная погрешность:', round(absolute_error / pi, 4) * 100, "%")
 
 plt.scatter(*zip(*outside), s=7, color = 'red')
 plt.scatter(*zip(*inside), s=7, color = 'green')

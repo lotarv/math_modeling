@@ -13,11 +13,11 @@ def random_sequence(N, a = 36261, m = 312500, X = 0.123):
     return element_sequence
 
 # Параметры распределений
-a = 2
-b = 7
-lambd = 1
-mu = 1
-sigma = 3
+a = 5
+b = 12
+lambd = 3
+mu = 2
+sigma = 2
 
 def uniform_distribution(R):
     return a + R * (b - a)
@@ -132,26 +132,18 @@ print(f'''Равномерное распределение:
         Абсолютная погрешность для выборки из {N} чисел: {abs(dispersion(normal) - dispersion_normal)}
         Относительная погрешность для выборки из {N} чисел: {abs(dispersion(normal) - dispersion_normal) / dispersion_normal * 100}''')
 
-
 # Построение графиков
 bins = 10
-rwidth = 0.5
+rwidth = 0.75
 fontsize = 8
 
 figure, axis = plt.subplots(3, 6)
-
-# Задание цвета фона
-figure.patch.set_facecolor('#F7F7F7')  # Тёмно-серый фон для всей фигуры
-for row in axis:
-    for ax in row:
-        ax.set_facecolor('white')  # Ещё более тёмный фон для отдельных осей
-
 
 X = linspace(a, b, 100)
 for i in (axis[0, 0], axis[0, 1], axis[0, 2], axis[0, 3], axis[0, 4]):
     i.fill_between(X, [density_uniform(x) for x in X], color='lightgray')
 for i in ((0, uniform[:N1]), (1, uniform[:N2]), (2, uniform[:N3]), (3, uniform[:N4]), (4, uniform)):
-    axis[0, i[0]].hist(i[1], bins=bins, rwidth=rwidth, density=True, color='#187AC5', range=(a, b))
+    axis[0, i[0]].hist(i[1], bins=bins, rwidth=rwidth, density=True, range=(a, b))
 axis[0, 5].ecdf(uniform)
 for i in ((0, N1), (1, N2), (2, N3), (3, N4), (4, N)):
     axis[0, i[0]].set_title(f'Равномерное\nN = {i[1]}', fontsize=fontsize)
@@ -161,9 +153,9 @@ X = linspace(min(exponential), max(exponential), 100)
 for i in (axis[1, 0], axis[1, 1], axis[1, 2], axis[1, 3], axis[1, 4]):
     i.fill_between(X, [density_exponential(x) for x in X], color='lightgray')
 for i in ((0, exponential[:N1]), (1, exponential[:N2]), (2, exponential[:N3]), (3, exponential[:N4]), (4, exponential)):
-    axis[1, i[0]].hist(i[1], bins=bins, rwidth=rwidth, density=True, color='#187AC5',range=(min(exponential), max(exponential)))
+    axis[1, i[0]].hist(i[1], bins=bins, rwidth=rwidth, density=True, range=(min(exponential), max(exponential)))
 axis[1, 5].ecdf(exponential)
-for i in ((0, N1), (1, N2), (2, N3), (3, N4), (4, N)):
+for i in ((0, N1), (1, N2), (2, N3), (3, N4), (4, N)): 
     axis[1, i[0]].set_title(f'Экспоненциальное\nN = {i[1]}', fontsize=fontsize)
 axis[1, 5].set_title('Экспоненциальное\nДиаграммы накопленных частот', fontsize=fontsize)
 
@@ -171,7 +163,7 @@ X = linspace(min(normal), max(normal), 100)
 for i in (axis[2, 0], axis[2, 1], axis[2, 2], axis[2, 3], axis[2, 4]):
     i.fill_between(X, [density_normal(x) for x in X], color='lightgray')
 for i in ((0, normal[:N1]), (1, normal[:N2]), (2, normal[:N3]), (3, normal[:N4]), (4, normal)):
-    axis[2, i[0]].hist(i[1], bins=bins, rwidth=rwidth, density=True, color='#187AC5', range=(min(normal), max(normal)))
+    axis[2, i[0]].hist(i[1], bins=bins, rwidth=rwidth, density=True, range=(min(normal), max(normal)))
 axis[2, 5].ecdf(normal)
 for i in ((0, N1), (1, N2), (2, N3), (3, N4), (4, N)):
     axis[2, i[0]].set_title(f'Нормальное\nN = {i[1]}', fontsize=fontsize)
